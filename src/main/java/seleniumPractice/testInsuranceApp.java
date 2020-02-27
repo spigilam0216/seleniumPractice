@@ -1,12 +1,15 @@
 package seleniumPractice;
 
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class firstSeleniumTest {
+public class testInsuranceApp {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -15,6 +18,23 @@ public class firstSeleniumTest {
 				WebDriverManager.chromedriver().setup();
 				//1 Launch Browser
 				WebDriver driver = new ChromeDriver();
+				//Navigate to AUT //demo.automationtalks.com
+				driver.get("http://demo.automationtalks.com/");
+				driver.manage().window().maximize();
+				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				
+				//thread sleep
+				Thread.sleep(4000);
+				driver.navigate().refresh();
+				Thread.sleep(4000);
+				
+				//find element
+				driver.findElement(By.id("nav_truck")).click();
+				driver.navigate().back();
+				Thread.sleep(4000);
+				
+				driver.navigate().forward();
+				
 				
 				//Navigate to AUT //demo.automationtalks.com
 				driver.get("http://demo.automationtalks.com/");
@@ -23,7 +43,8 @@ public class firstSeleniumTest {
 				//Verify Page Title
 				String ExpectedPageTitle = "Fill Vehicle Data";
 				String ActualPageTitle = driver.getTitle();
-				System.out.println(ActualPageTitle);
+				System.out.println("Page Title: "+ ActualPageTitle);
+				
 				if (ExpectedPageTitle.equalsIgnoreCase(ActualPageTitle))
 				{
 					System.out.println("Test is passed");
