@@ -19,9 +19,9 @@ public class testInsuranceApp {
 				//1 Launch Browser
 				WebDriver driver = new ChromeDriver();
 				//Navigate to AUT //demo.automationtalks.com
-				driver.get("http://demo.automationtalks.com/");
+				driver.get("http://qdpm.net/demo/v9/index.php");
 				driver.manage().window().maximize();
-				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 				
 				//thread sleep
 				Thread.sleep(4000);
@@ -29,19 +29,19 @@ public class testInsuranceApp {
 				Thread.sleep(4000);
 				
 				//find element
-				driver.findElement(By.id("nav_truck")).click();
-				driver.navigate().back();
-				Thread.sleep(4000);
+				//driver.findElement(By.id("nav_truck")).click();
+				//driver.navigate().back();
+				//Thread.sleep(4000);
 				
-				driver.navigate().forward();
+				//driver.navigate().forward();
 				
 				
 				//Navigate to AUT //demo.automationtalks.com
-				driver.get("http://demo.automationtalks.com/");
+				driver.get("http://qdpm.net/demo/v9/index.php");
 				//driver.wait(4000);
 				System.out.println ("Current URL:" + driver.getCurrentUrl());
 				//Verify Page Title
-				String ExpectedPageTitle = "Fill Vehicle Data";
+				String ExpectedPageTitle = "qdPM } Login";
 				String ActualPageTitle = driver.getTitle();
 				System.out.println("Page Title: "+ ActualPageTitle);
 				
