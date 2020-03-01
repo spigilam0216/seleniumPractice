@@ -1,9 +1,9 @@
 package javaPractice;
 
 public class Rectangle {
-	int length = 0;
-	int breadth = 0;
-	int area = 0;
+	int length;
+	int breadth;
+	int area;
 	
 	Rectangle() {
 		
