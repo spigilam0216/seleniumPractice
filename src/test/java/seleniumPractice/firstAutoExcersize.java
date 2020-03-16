@@ -11,6 +11,14 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class firstAutoExcersize {
+	
+	public void method_dropDown_Values (WebElement ele, String str) {
+		
+		Select slct = new Select(ele);
+		slct.selectByVisibleText(str);
+		
+	}
+	
   @Test
   public void f() {
 	    String gender = "Male";
@@ -34,18 +42,22 @@ public class firstAutoExcersize {
 		driver.findElement(By.id("FirstName")).sendKeys("John");
 		
 		driver.findElement(By.id("LastName")).sendKeys("Hauge");
+		
 				
 		WebElement day = driver.findElement(By.name("DateOfBirthDay"));
-		Select slct = new Select(day);
-		slct.selectByVisibleText("13");
+		method_dropDown_Values(day, "13");
+		//Select slct = new Select(day);
+		//slct.selectByVisibleText("13");
 		
 		WebElement dobmo = driver.findElement(By.name("DateOfBirthMonth"));
-		Select slct2 = new Select(dobmo);
-		slct2.selectByIndex(8);
+		method_dropDown_Values(dobmo, "August");
+		//Select slct2 = new Select(dobmo);
+		//slct2.selectByIndex(8);
 		
 		WebElement dobyr = driver.findElement(By.name("DateOfBirthYear"));
-		Select slct3 = new Select(dobyr);
-		slct3.selectByValue("1989");
+		method_dropDown_Values(dobyr, "1989");
+		//Select slct3 = new Select(dobyr);
+		//slct3.selectByValue("1989");
 		
 		driver.findElement(By.id("Email")).sendKeys(email);
 		driver.findElement(By.id("Username")).sendKeys(username);
@@ -66,4 +78,9 @@ public class firstAutoExcersize {
 		
 		
   }
+
+private void dropDownValues() {
+	// TODO Auto-generated method stub
+	
+}
 }
