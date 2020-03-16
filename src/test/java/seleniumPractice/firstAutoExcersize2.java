@@ -16,9 +16,13 @@ public class firstAutoExcersize2 {
 	
 	public void normal_dropDown_Values (WebElement ele, String str) {
 		
-		Select slct = new Select(ele);
-		slct.selectByVisibleText(str);
-		
+			Select slct = new Select(ele);
+			slct.selectByVisibleText(str);
+		}
+	
+	public void dropDown_by_values (WebElement ele, String str) {
+			Select slct = new Select(ele);
+			slct.selectByValue(str);
 		}
 	
 	public void enter_text (WebElement ele, String str) {
@@ -58,7 +62,14 @@ public class firstAutoExcersize2 {
 		String hobbies = " Speeding; Skydiving";
 		String website = "http://www.allstate.com/";
 		
+		String start_date = "04/25/2020";
+		String insurance_sum = "25000000";
+		String merit_rating = "Bonus 5";
+		String damage_insurance = "Full Coverage";
+		String optional_products = "Euro Protection;Legal Defense Insurance";
+		String courtsey_car = "Yes";
 		
+				
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.get("http://demo.automationtalks.com/index.html");
@@ -121,7 +132,7 @@ public class firstAutoExcersize2 {
 		Assert.assertEquals(actual_title, expected_title, "Title doesnt match");
 		
 		
-		
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		//Fill Insurant Data
 		WebElement fnm = driver.findElement(By.id("firstname"));
 		enter_text(fnm, first_name);
@@ -173,6 +184,35 @@ public class firstAutoExcersize2 {
 		
 		Assert.assertEquals(actual_title_ins, expected_title_ins, "Title doesnt match for INS");
 		
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		WebElement stdt = driver.findElement(By.id("startdate"));
+		enter_text(stdt, start_date);
+		
+		WebElement ins = driver.findElement(By.id("insurancesum"));
+		dropDown_by_values(ins, insurance_sum);
+		
+		WebElement mrt = driver.findElement(By.id("meritrating"));
+		normal_dropDown_Values(mrt, merit_rating);
+		
+		WebElement dmg = driver.findElement(By.id("damageinsurance"));
+		normal_dropDown_Values(dmg, damage_insurance);
+		
+		String[] ops = optional_products.split(";");
+		for (String str : ops) {
+			   driver.findElement(By.xpath("//label[text()='" + str+ "']")).click();	
+			}
+		
+		WebElement car = driver.findElement(By.id("courtesycar"));
+		normal_dropDown_Values(car, courtsey_car);
+		
+		driver.findElement(By.id("nextselectpriceoption")).click();
+		
+		String expected_title_price = "Choose Price Option";
+		String actual_title_price = driver.getTitle();
+		System.out.println("Actual Title Price:" + actual_title_price);
+		
+		Assert.assertEquals(actual_title_price, expected_title_price, "Title doesnt match for PRICE");
 		
 		
   }
