@@ -69,6 +69,12 @@ public class firstAutoExcersize2 {
 		String optional_products = "Euro Protection;Legal Defense Insurance";
 		String courtsey_car = "Yes";
 		
+		String email = "onlinerental@yahoo.com";
+		String phone = "4109273223";
+		String username = "onlinerental3";
+		String password = "onlinerental123";
+		String confirm_password = "onlinerental123";
+		String comments = "Here is the quote, please review and let me know if you have any questions";
 				
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
@@ -214,6 +220,38 @@ public class firstAutoExcersize2 {
 		
 		Assert.assertEquals(actual_title_price, expected_title_price, "Title doesnt match for PRICE");
 		
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////
+		int no_of_rows = driver.findElements(By.xpath("//table[@id='priceTable']/tbody/tr")).size();
+		System.out.println("No of rows:" + no_of_rows);
+		int no_of_cols = driver.findElements(By.xpath("//table[@id='priceTable']/tbody/tr[1]/td")).size();
+		System.out.println("No of columns:" + no_of_cols);
+		String silver_price = driver.findElement(By.xpath("//table[@id='priceTable']/tbody/tr[1]/td[2]")).getText();
+		System.out.println("Silver plan price:" + silver_price);
+		
+		driver.findElement(By.xpath("//table[@id='priceTable']//tfoot//th[2]/label[3]")).click();
+		driver.findElement(By.xpath("//button[@id='nextsendquote']")).click();
+		
+		
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+		WebElement eml = driver.findElement(By.id("email"));
+		enter_text(eml, email);
+		
+		WebElement phn = driver.findElement(By.id("phone"));
+		enter_text(phn, phone);
+		
+		WebElement uname = driver.findElement(By.id("username"));
+		enter_text(uname, username);
+		
+		WebElement passw = driver.findElement(By.id("password"));
+		enter_text(passw, password);
+		
+		WebElement cpsw = driver.findElement(By.id("confirmpassword"));
+		enter_text(cpsw, confirm_password);
+		
+		WebElement cmnt = driver.findElement(By.id("comments"));
+		enter_text(cmnt, comments);
+		
+		driver.findElement(By.xpath("//button[@id='sendemail']")).click();
 		
   }
   
